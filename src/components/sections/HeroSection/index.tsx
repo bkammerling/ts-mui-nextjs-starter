@@ -3,11 +3,6 @@ import type * as types from 'types';
 import { Button } from '../../atoms/Button';
 import { Markdown } from '../../atoms/Markdown';
 
-import MuiBox from '@mui/material/Box';
-import MuiGrid from '@mui/material/Grid';
-import MuiStack from '@mui/material/Stack';
-import MuiTypography from '@mui/material/Typography';
-
 export type Props = types.HeroSection & types.StackbitFieldPath;
 
 export const HeroSection: React.FC<Props> = (props) => {
@@ -15,65 +10,47 @@ export const HeroSection: React.FC<Props> = (props) => {
     const hasTextContent = !!title || !!subtitle || !!text || actions.length > 0;
 
     return (
-        <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
-            <MuiGrid container spacing={4}>
+        <section className="py-6 sm:py-10" data-sb-field-path={fieldPath}>
+            <div className="grid gap-4 md:grid-cols-2">
                 {hasTextContent && (
-                    <MuiGrid item xs={12} md={image?.url ? 6 : 12}>
+                    <div className="">
                         {title && (
-                            <MuiTypography component="h1" variant="h2" color="text.primary" data-sb-field-path=".title">
+                            <h1 className="text-2xl font-bold text-primary" data-sb-field-path=".title">
                                 {title}
-                            </MuiTypography>
+                            </h1>
                         )}
                         {subtitle && (
-                            <MuiTypography component="p" variant="h5" color="text.primary" sx={{ ...(!!title && { mt: 1 }) }} data-sb-field-path=".subtitle">
+                            <p className={`text-lg text-primary ${!!title ? 'mt-1' : ''}`} data-sb-field-path=".subtitle">
                                 {subtitle}
-                            </MuiTypography>
+                            </p>
                         )}
                         {text && (
-                            <MuiTypography component="div" color="text.secondary" maxWidth="md">
+                            <div className="text-secondary max-w-prose">
                                 <Markdown text={text} data-sb-field-path=".text" />
-                            </MuiTypography>
+                            </div>
                         )}
                         {actions.length > 0 && (
-                            <MuiStack
-                                sx={{ ...(!!(title || subtitle || text) && { mt: 4 }) }}
-                                direction="row"
-                                alignItems="center"
-                                justifyContent="flex-start"
-                                flexWrap="wrap"
-                                data-sb-field-path=".actions"
-                            >
+                            <div className={`${!!(title || subtitle || text) ? 'mt-4' : ''} flex flex-wrap items-center`} data-sb-field-path=".actions">
                                 {actions.map((action, index) => (
-                                    <Button
-                                        key={index}
-                                        {...action}
-                                        sx={{
-                                            mr: 2,
-                                            mb: 2
-                                        }}
-                                        data-sb-field-path={`.${index}`}
-                                    />
+                                    <div key={index} className="mr-2 mb-2" data-sb-field-path={`.${index}`}>
+                                        <Button {...action} />
+                                    </div>
                                 ))}
-                            </MuiStack>
+                            </div>
                         )}
-                    </MuiGrid>
+                    </div>
                 )}
                 {image?.url && (
-                    <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
-                        <MuiBox
-                            component="img"
-                            sx={{
-                                height: 'auto',
-                                maxWidth: '100%',
-                                width: '100%'
-                            }}
+                    <div className="">
+                        <img
+                            className="w-full h-auto"
                             alt={image?.altText}
                             src={image?.url}
                             data-sb-field-path=".image .image.url#@src .image.altText#@alt"
                         />
-                    </MuiGrid>
+                    </div>
                 )}
-            </MuiGrid>
-        </MuiBox>
+            </div>
+        </section>
     );
 };

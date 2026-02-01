@@ -4,21 +4,21 @@ type: Page
 sections:
   - type: HeroSection
     title: Hero Title
-    subtitle: 'Featuring TypeScript, Next.js, MUI v5 & Emotion'
+    subtitle: Featuring TypeScript, Next.js and more
     text: >
       This is the HeroSection component. You can visually edit this component &
       add more sections while developing locally. [Learn
       more.](https://docs.netlify.com/visual-editor/local-development/)
     actions:
       - type: Button
-        label: Start Building
-        url: 'https://docs.netlify.com/visual-editor/get-started/'
+        label: VIEW MY SITE
+        url: https://adamkammerling.co.uk
         size: large
         variant: contained
         color: primary
       - type: Button
         label: Read the Docs
-        url: 'https://docs.netlify.com/visual-editor/overview/'
+        url: https://docs.netlify.com/visual-editor/overview/
         size: large
         variant: outlined
         color: primary
@@ -44,7 +44,7 @@ sections:
         actions:
           - type: Button
             label: Read the Docs
-            url: 'https://docs.netlify.com/visual-editor/overview/'
+            url: https://docs.netlify.com/visual-editor/overview/
       - type: Card
         title: Second Card Title
         image:
@@ -59,7 +59,7 @@ sections:
         actions:
           - type: Button
             label: Read the Docs
-            url: 'https://docs.netlify.com/visual-editor/overview/'
+            url: https://docs.netlify.com/visual-editor/overview/
       - type: Card
         title: Third Card Title
         image:
@@ -74,5 +74,5 @@ sections:
         actions:
           - type: Button
             label: Read the Docs
-            url: 'https://docs.netlify.com/visual-editor/overview/'
+            url: https://docs.netlify.com/visual-editor/overview/
 ---

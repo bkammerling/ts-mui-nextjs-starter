@@ -2,17 +2,16 @@ import * as React from 'react';
 import NextLink from 'next/link';
 import type * as types from 'types';
 
-import MuiLink from '@mui/material/Link';
-
-export type Props = types.Link & types.StackbitFieldPath & { className?: string; sx?: { [key: string]: any } };
+export type Props = types.Link & types.StackbitFieldPath & { className?: string };
 
 export const Link: React.FC<Props> = (props) => {
-    const { className, label, url, underline = 'always', color = 'primary', sx, 'data-sb-field-path': fieldPath } = props;
+    const { className, label, url, 'data-sb-field-path': fieldPath } = props;
     const annotations = fieldPath ? [fieldPath, `${fieldPath}.url#@href`].join(' ').trim() : null;
 
+    // Simple link component; styling should be provided via className (Tailwind)
     return (
-        <MuiLink component={NextLink} href={url} className={className} underline={underline} color={color} sx={{ ...sx }} data-sb-field-path={annotations}>
+        <NextLink href={url} className={className} data-sb-field-path={annotations}>
             <span data-sb-field-path=".label">{label}</span>
-        </MuiLink>
+        </NextLink>
     );
 };
